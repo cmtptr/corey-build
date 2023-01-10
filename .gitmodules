@@ -1,0 +1,20 @@
+[submodule "submodules/meta-openamp"]
+	path = submodules/meta-openamp
+	url = https://github.com/Xilinx/meta-openamp.git
+	branch = rel-v2022.1
+[submodule "submodules/meta-openembedded"]
+	path = submodules/meta-openembedded
+	url = https://github.com/Xilinx/meta-openembedded.git
+	branch = rel-v2022.1
+[submodule "submodules/meta-xilinx"]
+	path = submodules/meta-xilinx
+	url = https://github.com/Xilinx/meta-xilinx.git
+	branch = rel-v2022.1
+[submodule "submodules/meta-xilinx-tools"]
+	path = submodules/meta-xilinx-tools
+	url = https://github.com/Xilinx/meta-xilinx-tools.git
+	branch = rel-v2022.1
+[submodule "submodules/poky"]
+	path = submodules/poky
+	url = https://github.com/Xilinx/poky.git
+	branch = rel-v2022.1

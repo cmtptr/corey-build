@@ -1,0 +1,27 @@
+A minimum working example to illustrate runqemu difficulties after upgrading
+from rel-v2022.1_update2 to rel-v2022.2.
+
+
+This repository uses submodules to track the Xilinx metadata layers.  After
+cloning, use "git submodule update --init" to initialize them.  After changing
+branches, remember to use "git submodule update" to switch the submodules to
+their appropriate branches.
+
+
+Instructions are as follows.
+
+
+Success case:
+
+    1. git checkout rel-v2022.1 && git submodule update
+    2. source ./init-build-env
+    3. bitbake core-image-minimal
+    4. runqemu
+
+
+Failure case:
+
+    1. git checkout rel-v2022.2 && git submodule update
+    2. source ./init-build-env
+    3. bitbake core-image-minimal
+    4. runqemu

@@ -1,0 +1,23 @@
+if [ -n "$BASH_SOURCE" ]; then
+    COREY_BUILDDIR=$(readlink -f "$(dirname "$BASH_SOURCE")")
+elif [ -n "$ZSH_NAME" ]; then
+    COREY_BUILDDIR=$(readlink -f "$(dirname "$0")")
+else
+    COREY_BUILDDIR=$(readlink -f "$(pwd)")
+    if [ ! -f "$COREY_BUILDDIR/init-build-env" ]; then
+        echo "Error: '$COREY_BUILDDIR/init-build-env' doesn't exist!" >&2
+        echo "Please source this script from init-build-env's directory." >&2
+        return 1
+    fi
+    cd submodules/poky  # oe-init-build-env must be sourced from its parent dir
+fi
+
+BB_ENV_EXTRAWHITE="OE_TERMINAL COREY_BUILDDIR"
+TEMPLATECONF=$COREY_BUILDDIR/conf
+if ! . "$COREY_BUILDDIR/submodules/poky/oe-init-build-env" "$@"; then
+    unset BB_ENV_EXTRAWHITE COREY_BUILDDIR TEMPLATECONF
+    return 1
+fi
+
+PS1="($(basename "$COREY_BUILDDIR"):$(basename "$BUILDDIR")) $PS1"
+export COREY_BUILDDIR
